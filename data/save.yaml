@@ -1,8 +1,10 @@
 ---
-:word: anthem
+:word: rink
 :try:
 - a
-- n
+- b
+- r
+- s
 - t
-- e
-:wrong: 0
+- l
+:wrong: 5

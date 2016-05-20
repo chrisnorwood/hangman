@@ -26,15 +26,15 @@ class Game
     if game_over?
       render_game
 
-      puts "You won!" if winner?
-      puts "You lost!  The word was: #{@word}" if loser?
+      puts "You won!".color(:green_text) if winner?
+      puts "#{'You lost!'.color(:red_text)}  The word was: #{@word.color(:green_text)}" if loser?
 
       replay_prompt
     end
   end
 
   def prompt
-    puts "Enter a guess, a-z :"
+    puts "Enter a guess, #{'a-z'.color(:green_text)}, or type #{'save'.color(:red_text)} to save:"
 
     guess = gets.chomp
     exit if guess == 'exit'
@@ -45,7 +45,7 @@ class Game
     end
 
     if !valid_guess?(guess)
-      print "#{guess} is an invalid selection.\n\n"
+      print "#{guess.color(:red_text)} is an invalid selection.\n\n"
       prompt
     else
       @try << guess
@@ -60,6 +60,7 @@ class Game
   end
 
   def load
+    puts "\n\nLoading...".color(:green_text)
     data = {}
     File.open('data/save.yaml', 'r') do |f|
       data = YAML.load(f.read)
@@ -78,7 +79,7 @@ class Game
     File.open('data/save.yaml', 'w') do |f|
       f.write YAML.dump(data)
     end
-    puts "\n\nSaving...."
+    puts "\n\nSaving....".color(:green_text)
   end
 
   private
@@ -122,7 +123,7 @@ class Game
         puts "Thanks for playing!"
         exit
       else
-        puts 'Please enter yes or no.'
+        puts "Please enter #{'yes'.color(:red_text)} or #{'no'.color(:red_text)}."
         replay_prompt
       end
     end

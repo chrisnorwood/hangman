@@ -1,3 +1,4 @@
+require_relative 'string'
 require_relative 'lib/game'
 
 class Hangman
@@ -7,7 +8,7 @@ class Hangman
  / /_/ / _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\ 
 / __  / (_| | | | | (_| | | | | | | (_| | | | |
 \\/ /_/ \\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|
-                   |___/                       \n\n"
+                   |___/                       \n\n".color(:red_text)
     type = prompt
 
     game = Game.new(type)
@@ -15,7 +16,7 @@ class Hangman
   end
 
   def prompt
-    puts "Would you like to play a (new) game or (load) the last-saved game?"
+    puts "Would you like to play a #{'new'.color(:red_text)} game or #{'load'.color(:red_text)} the last-saved game?"
     input = gets.chomp
     exit if input == 'exit'
 
