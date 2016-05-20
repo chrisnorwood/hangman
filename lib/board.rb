@@ -2,6 +2,8 @@ class Board
   def initialize
   end
 
+  # Arguments: integer number of wrong guesses
+  # Displays dynamic hangman graphic, based on argument
   def print_board g
     puts "
                     _______________
